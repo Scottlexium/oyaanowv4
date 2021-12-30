@@ -7,8 +7,8 @@ const handleErrors = (err) => {
   let errors = { email: '', password: '' };
 
   // incorrect email
-  if (err.message === 'incorrect email') {
-    errors.email = 'That email is not registered';
+  if (err.message === 'incorrect id') {
+    errors.email = 'That id is not registered';
   }
 
   // incorrect password
@@ -18,7 +18,7 @@ const handleErrors = (err) => {
 
   // duplicate email error
   if (err.code === 11000) {
-    errors.email = 'that email is already registered';
+    errors.email = 'that id is already registered';
     return errors;
   }
 
