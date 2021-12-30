@@ -26,6 +26,9 @@ app.use(authRoutes);
 // routes
 
 app.get('*', checkUser);
+app.get('/', (req, res) =>{
+    res.redirect('admin')
+});
 app.get('/admin', requireAuth, (req, res) =>{
     res.render('admin', {title: 'Admin Dashboard'})
 });
