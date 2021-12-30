@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OyaNow || <%= title %></title>
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body>
+    <main class="main-container">
+      <%- include ('./partials/nav.ejs') %>
+      <section class="right item2">
+        <div class="top">
+          <h1 class="user">Hello <strong><%=user.name%>!</strong></h1>
+          <ul class="top-right-content">
+            <li><p>GIGM Agent, Benin</p></li>
+            <li class="acc-lvl"><p>Level 1 Account</p></li>
+            <li><img src="" alt="prof" /></li>
+          </ul>
+        </div>
+        <p class="data">Past 7 Days</p>
+        <ul class="middle">
+          <li class="active-buses">
+            <div><p>Active Buses</p></div>
+            <h1>14</h1>
+          </li>
+          <li class="travel-in-progress">
+            <div><p>Travel in progress</p></div>
+            <h1>04</h1>
+          </li>
+          <li class="completed-travels">
+            <div><p>Completed travels</p></div>
+            <h1>34</h1>
+          </li>
+          <li class="canceled-bookings">
+            <div><p>Canceled Bookings</p></div>
+            <h1>02</h1>
+          </li>
+          <li class="add-bus">
+            <section>
+              <div class="add+"><small class="small-plus">+</small></div>
+              <h2 class="add_txt">Add Bus</h2>
+            </section>
+          </li>
+        </ul>
+        <table border="0" cellpadding="0" cellspacing="0" class="table-serial">
+          
+            <div style="background-color: white; border-radius: 10px;">
+            <th> </th>
+            <th>Bus No</th>
+            <th>Route</th>
+            <th>Departure time</th>
+            <th>Travel Time</th>
+            <th>No Of passengers</th>
+            </div>
+          
+
+          <tr>
+            <td>&nbsp;</td>
+            <td>KJL 999 UHY</td>
+            <td class="route">Benin-Warri</td>
+            <td>9:00AM GMT</td>
+            <td>45 Mins</td>
+            <td>65</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>KJL 999 UHY</td>
+            <td class="route">Benin-Warri</td>
+            <td>9:00AM GMT</td>
+            <td>45 Mins</td>
+            <td>65</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>KJL 999 UHY</td>
+            <td class="route">Benin-Warri</td>
+            <td>9:00AM GMT</td>
+            <td>45 Mins</td>
+            <td>65</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>KJL 999 UHY</td>
+            <td class="route">Benin-Warri</td>
+            <td>9:00AM GMT</td>
+            <td>45 Mins</td>
+            <td>65</td>
+          </tr>
+        </table>
+      </section>
+    </main>
+
+    <script>
+      // Add active class to the current button (highlight it)
+      var header = document.getElementById("linkers");
+      var btns = header.getElementsByClassName("dirs");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+        });
+      }
+      </script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/login.css">
+</head>
+<body>
+    <nav class="login-nav">
+        <img src="/assets/oyaanow-logo.svg" alt="">
+    </nav>
+    <main class="main-login-section">
+        <section class="login-section">
+            <div class="left-glass-weapper">
+                <div class="glass"></div>
+            </div>
+            <div class="right-form">
+                <form method="POST" action="/login" id="form">
+                    
+                    <h1 style="margin-bottom: 30px; margin-left: -40px;">Welcome back!</h1>
+                    <div>
+                        <label for="email"> Email Address</label>
+                        <input name="email" id="email" autocomplete="off" type="email" placeholder="Email address">
+                        <div class="password error"></div>
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input name="password" id="password" autocomplete="off" type="password" placeholder="Password">
+                        <div class="email error"></div>
+                    </div>
+
+                    <div class="login-div">
+                        <button id="btn" class="login-btn" type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script>
+        const emailError = document.querySelector('.email.error');
+        const passwordError = document.querySelector('.password.error');
+        const form = document.querySelector('form');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // reset errors
+            emailError.textContent = '';
+            passwordError.textContent = '';
+
+            // get the values
+            const email = form.email.value;
+            const password = form.password.value;
+
+            try {
+                const res = await fetch('/login', {
+                    method: 'POST',
+                    body: JSON.stringify({email, password}),
+                    headers: {'Content-Type': 'application/json'}
+                });
+                const data = await res.json();
+                console.log(data);
+                if (data.errors) {
+                    emailError.textContent = data.errors.email;
+                    passwordError.textContent = data.errors.password;
+                }
+                if (data.user) {
+                    location.assign('/admin');
+                }
+                
+            } catch (err) {
+                console.log(err)
+            }
+
+        });
+    </script>
+</body>
+</html>

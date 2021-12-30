@@ -1,0 +1,132 @@
+:root{
+    --input:#F6F6F6;
+    --yellow: #FF9900;
+    --bg:  #E5E5E5;
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg);
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap');
+.login-section{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.login-nav{
+    margin-left: 74px;
+    margin-top: 20px;
+}
+.right-form form{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.right-form form div{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+
+}
+.right-form form div input{
+    width: 90%;
+    height: 50px;
+    border-radius: 9px;
+    outline: none;
+    font-size: 20px;
+    background-color: var(--input);
+    border: none;
+    text-indent: 10px;
+}
+form div label{
+    margin-bottom: 20px;
+}
+input::placeholder{
+    font-size: 20px;
+}
+body{
+    height: 90vh;
+}
+.right-form{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+.main-login-section{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 45px;
+    
+}
+.login-div{
+    outline: none;
+    border: none;
+}
+.login-btn{
+    background-color: none;
+     background: var(--yellow);
+     color: white;
+     outline: none;
+     font-size: 20px;
+     font-weight: 600;
+     border-radius: 10px;
+     height: 50px;
+     width: 178px;
+     border: none;
+     margin-left: -30px;
+}
+
+
+/* glass */
+
+
+.glass{
+    /* background: linear-gradient(252.26deg, rgba(255, 255, 255, 0.69) 20.91%, rgba(255, 255, 255, 0) 121.92%);; */
+    border-radius: 23px;
+    position: relative;
+    height: 80%;
+    width: 80%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    /* backdrop-filter: blur(96px); */
+    /* border: 1px solid rgba(43, 43, 43, 0.568); */   
+}
+.glass::before{
+    content: "";
+    position: absolute;
+    background: url('https://cdn.shopify.com/s/files/1/1095/6418/files/final.jpg?v=1481918145');
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    border-radius: 23px;
+    filter: blur(2px);
+}
+/* .glass::before{
+    position: absolute;
+    content: '';
+    background: linear-gradient(252.26deg, rgba(255, 255, 255, 0.69) 20.91%, rgba(255, 255, 255, 0) 121.92%);;
+    left: 0;
+    right: 0;
+    backdrop-filter: blur(90px);
+    border-radius: 23px;
+    backdrop-filter: blur(96px)
+} */
+.left-glass-weapper{
+    background: url('https://cdn.shopify.com/s/files/1/1095/6418/files/final.jpg?v=1481918145');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 23px;
+}
