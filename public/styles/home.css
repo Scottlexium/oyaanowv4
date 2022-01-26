@@ -1,0 +1,62 @@
+.main__section{
+    width: 100%;
+    display: flex;
+}
+#sc-form{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.from__div{
+    display: flex;
+    flex-direction: column;
+}
+.from__div select{
+    width: 200px;
+    outline: none;
+    border: none;
+    height: 40px;
+    font-size: 20px;
+}
+#form-to-div{
+    width: 100%;
+}
+#form-to-div div{
+    width: 100%;
+}
+#form-to-div select{
+    width: 200px;
+    outline: none;
+    border: none;
+    height: 40px;
+    font-size: 20px;
+}
+.vehicle__type{
+    display: flex;
+    flex-direction: column;
+}
+.vehicle__type select{
+    width: 100px;
+    height: 40px;
+    border: none;
+    outline: none;
+}
+
+.book__btn__home{
+    height: 40px;
+    width: 100px;
+    background-color: orange;
+    outline: none;
+    border: none;
+    flex-wrap: wrap;
+}
+.submit__btn__div{
+    display: flex;
+    flex-direction: column;
+}
+.submit__btn__div label{
+    visibility: hidden;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .listing{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            list-style: none;
+            row-gap: 50px;
+        }
+        .listing button{
+            background-color:#FF9900;
+            color: white;
+            padding: 12px 19px;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            border: none;
+        }
+    </style>
+    <h1>Search Results</h1>
+
+    <div style="width: 100%;">
+        <ul class="listing">
+            <form id="details__form" action="/details/customer" method="POST" class="details__form">
+                <h2>God is Goog Motos</h2>
+                <small style="color: rgb(68, 68, 241);"><label id="avail__seats">75</label> seats available</small>
+                <p value="4,789" id="price">NGN <b>4789</b></p>
+                
+                <p>Uselu, Edo State</p>
+                <p style="color: green ;">Verified Affiliate</p>
+                <button type="submit">Book Now</button>
+            </form method="POST" class="details__form">
+            <form method="POST" class="details__form">
+                <h2>God is Goog Motos</h2>
+                <small style="color: rgb(68, 68, 241);"><label id="avail__seats">75</label> seats available</small>
+                <p id="price">NGN 4,789.90</p>
+                <p>Uselu, Edo State</p>
+                <p style="color: green ;">Verified Affiliate</p>
+                <button type="submit">Book Now</button>
+            </form method="POST" class="details__form">
+            <form method="POST" class="details__form">
+                <h2>God is Goog Motos</h2>
+                <small style="color: rgb(68, 68, 241);"><label id="avail__seats">75</label> seats available</small>
+                <p id="price">NGN 4,789.90</p>
+                <p>Uselu, Edo State</p>
+                <p style="color: green ;">Verified Affiliate</p>
+                <button href="">Book Now</button>
+            </form method="POST" class="details__form">
+            <form id="details__form" method="POST" class="details__form">
+                <h2>God is Goog Motos</h2>
+                <small style="color: rgb(68, 68, 241);"><label id="avail__seats"></label> seats available</small>
+                <p id="price">NGN 4,789.90</p>
+                <p>Uselu, Edo State</p>
+                <p style="color: green ;">Verified Affiliate</p>
+                <button href="">Book Now</button>
+            </form method="POST" class="details__form">
+        </ul>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+    <script>
+        const bookbtn = document.querySelector("button");
+        const form = document.getElementById('details__form');
+        const values = [];
+        form.addEventListener("submit", store);
+        function store(e) {
+            const p = document.querySelector('b').innerHTML;
+            var encrypted = CryptoJS.AES.encrypt(p, "Secret Price");
+            const price = encrypted;
+            sessionStorage.setItem("price", price);
+            window.location.assign('http://localhost:4000/details/customer');
+
+        }
+    </script>
+</body>
+</html>

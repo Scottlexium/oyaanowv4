@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: poppins, sans-serif;
+      }
+      ul {
+        display: flex;
+        width: 90%;
+        flex-wrap: wrap;
+        column-gap: 90px;
+        list-style: none;
+        row-gap: 90px;
+        justify-content: center;
+      }
+      ul li {
+        width: 400px;
+        height: 350px;
+        background: #fefefe;
+        box-shadow: 4px 12px 35px rgba(171, 171, 171, 0.25);
+        border-radius: 17px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        text-indent: 20px;
+        justify-self: center;
+        align-self: center;
+      }
+      .container {
+        width: 100%;
+        display: flex;
+        height: auto;
+        justify-content: center;
+        margin-top: 40px;
+      }
+      .seat_avail {
+        width: 117px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #0057ff;
+        background: #e1ebfe;
+        border-radius: 4px;
+        font-size: 16px;
+        text-align: center;
+        margin-left: 20px;
+        text-indent: 0px;
+      }
+      .company {
+        color: #a2a2a2;
+        font-size: 24px;
+      }
+      li a {
+        font-size: 24px;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        text-decoration: none;
+      }
+      li a p {
+        font-size: 24px;
+        height: 70px;
+        width: 90%;
+        background: #ff9900;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-indent: 0px;
+        color: white;
+        font-weight: 600;
+      }
+      .price_p {
+        font-size: 28px;
+        font-weight: bolder;
+      }
+      .location {
+        display: flex;
+        align-items: center;
+        text-indent: 0px;
+        margin-left: 20px;
+      }
+      .verified {
+        display: flex;
+        text-indent: 0px;
+        width: 200px;
+        margin-left: 20px;
+      }
+      .top {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .back-btn {
+        width: 40px;
+        border: 1px solid #afafaf;
+        box-sizing: border-box;
+        border-radius: 6px;
+      }
+
+      .sort__div img{
+        width: 30px;
+        background: #0057FF;
+        border-radius:8px;
+        padding: 10px;
+      }
+      .sort__div{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 200px;
+      }
+      .sort__div input{
+        width: 70%;
+        height: 45px;
+        border-radius: 8px;
+        outline: none;
+        border: 1px solid #8E8E8E;
+        text-indent: 10px;
+        font-size: 18px;
+      }
+      .sort_main_div span{
+        margin-left: 60px;
+        color: #686868;
+
+      }
+      .sort_main_div{
+        width: 90%;
+      }
+      .main-container-top{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      .main-wrapper{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+      }
+      
+    </style>
+    <section class="main-container-top">
+      <main class="main-wrapper">
+        <div class="top"><img class="back-btn" src="/assets/back-btn.png" alt="" /><h1>Search Results</h1><img src="/assets/logo-right.png" alt="" /></div>
+        <div class="sort_main_div">
+          <h2 style="margin-bottom: 20px; font-weight: normal;">Sort By</h2>
+          <span>Price</span>
+        <div class="sort__div">
+          <img src="/assets/sort.png" alt="">
+          <input onkeyup="sortFunction()" type="text" placeholder="NGN" name="sort" id="sort_input">
+        </div>
+      </div>
+      </main>
+    </section>
+    
+    <div class="container">
+      <ul id="sortUL">
+        <% if(bus.length > 0) {%> <% bus.forEach(bus => { %>
+        <li id="li">
+          <p class="company"><%= bus.company %></p>
+          <div id="priceDiv" class="seat_avail">
+            <span id="priceId"><%= bus.number_of_seat%> seats left</span>
+          </div>
+          <h4 id="bus_price" class="price_p">NGN <%= bus.price %></h4>
+          <div class="location">
+            <img src="/assets/location.svg" alt="" />
+            <p><%= bus.from%>, <%=bus.to%></p>
+          </div>
+          <div class="verified">
+            <img src="/assets/verified.svg" alt="" />
+            <p>Verified Affiliate</p>
+          </div>
+          <a href="/getbus/<%= bus.id %>" class="bus"><p>Book Now</p></a>
+        </li>
+        <% }) %> <% }else { %>
+        <p>There are no bus to display</p>
+        <% } %>
+      </ul>
+    </div>
+
+    <script>
+      function sortFunction() {
+ // Declare variables
+ var input, filter, ul, li, a, i, txtValue;
+          input = document.getElementById('sort_input');
+          filter = input.value.toUpperCase();
+          console.log(filter);
+          ul = document.getElementById("sortUL");
+          li = ul.getElementsByTagName('li');
+        
+          // Loop through all list items, and hide those who don't match the search query
+          for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("h4")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              li[i].style.display = "";
+            } else {
+              li[i].style.display = "none";
+            }
+          }
+      }
+      </script>
+  </body>
+</html>

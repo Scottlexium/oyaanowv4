@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form method="POST" action="" id="pay__form">
+      <label for="">Seat 001</label>
+      <input type="checkbox" name="seat" value="001" id="001" />
+      <label for="">Seat 002</label>
+      <input type="checkbox" name="seat" value="002" id="002" />
+      <label for="">Seat 003</label>
+      <input type="checkbox" name="seat" value="003" id="003" />
+      <label for="">Seat 004</label>
+      <input type="checkbox" name="seat" value="004" id="004" />
+      <label for="">Seat 005</label>
+      <input type="checkbox" name="seat" value="004" id="005" />
+
+      <button class="btn btn-primary col-md-6">Pay</button>
+    </form>
+
+    <h1>hi</h1>
+    <p></p>
+    <a href=""></a>
+    <input id="numbers" type="number">
+    <button onclick="show()">click</button>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
+      integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const form = document.querySelector("form");
+      const btn = document.querySelector("button");
+      const values = [];
+      let qualtities = values;
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const checked = document.getElementsByName("seat");
+        for (let i = 0; i < checked.length; i++) {
+          if (checked[i].checked == true) {
+            values.push(checked[i].value);
+          }
+        }
+        const seats = values.toString();
+        alert(`selected seat(s) :${seats}`);
+        const position = seats;
+        console.log(position);
+        console.log(values.length);
+        const numOfSeats = (values.length);
+
+        sessionStorage.setItem("cart", numOfSeats);
+
+        const lastprice = sessionStorage.getItem("price");
+        var decrypted = CryptoJS.AES.decrypt(lastprice, "Secret Price");
+        const num = decrypted;
+        const newP = (document.querySelector("p").innerHTML =
+          decrypted.toString(CryptoJS.enc.Utf8));
+          console.log(newP);
+
+        //   document.querySelector('a').innerHTML = finalTotal*length;
+            const pnum = document.getElementById('numbers').value = parseInt(newP)*numOfSeats;
+            console.log(pnum);
+            fetch("/choose")
+              .then((res) => {
+                window.location.assign("http://localhost:4000/choose");
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+      });
+
+      window.onload = (e) => {
+
+      };
+    </script>
+  </body>
+</html>
+
+
+<!-- data = { seats };
+const selected = {
+  method: "POST",
+  body: JSON.stringify(data),
+  headers: {
+    "Content-Type": "application/json",
+  },
+};
+fetch("/book", selected)
+  .then((res) => {})
+  .catch((err) => {
+    console.log(err);
+  }); -->

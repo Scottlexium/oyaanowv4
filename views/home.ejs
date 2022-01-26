@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/home.css">
+    <title>Oyaanow || Home</title>
+</head>
+<body>
+    <section class="main__section">
+        <form id="sc-form" method="POST">
+            <div class="from__div">
+                <label for="">From</label>
+            <select onchange="dynamic()" id="form_from">
+                <option value="Benin">Benin</option>
+                <option value="Lagos">Lagos</option>
+                <option value="Warri">Warri</option>
+                <option value="Port-Harcourt">Port Harcourt</option>
+                <option value="Kaduna">Kaduna</option>
+                <option value="Asaba">Asaba</option>
+                <option value="Abuja">Abuja</option>
+                <option selected value="Where from">Where from</option>
+            </select>
+            </div>
+    
+            <div class="to__div">
+                <label for="">To</label>
+            <div id="form-to-div">
+                <select id="form__to">
+                    <option></option>
+                </select>
+            </div>
+            </div>
+
+            <div class="vehicle__type" id="vehicle__div">
+                <label for="">Bus Type</label>
+                <select name="" id="vehicle">
+                    <option></option>
+                </select>
+            </div>
+
+            <div class="submit__btn__div">
+                <label for="">Submit</label>
+                <button class="book__btn__home" onClick="select_change()" type="submit">Submit</button>
+            </div>
+        </form>
+    </section>
+<script src="/js/main.js"></script>
+</body>
+</html>

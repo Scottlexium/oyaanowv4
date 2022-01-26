@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      #true {
+        visibility: hidden;
+      }
+    </style>
+    <form method="" action="" id="pay__form">
+      <!-- 
+        <% if(details.length > 0) {%> <% details.forEach(bus => { %>
+            <label for="">Seat</label>
+            <input type="checkbox" name="" id="<%= details.one %>">
+            <label for="">Seat</label>
+            <input type="checkbox" name="" id="<%= details.two %>">
+            <% }) %> <% }else { %>
+            <p>There are no bus to display</p>
+            <% } %> -->
+
+      <label for="">Seat 001</label>
+      <input class="" type="checkbox" name="seat" value="1" id="001" />
+      <label for="">Seat 002</label>
+      <input type="checkbox" name="seat" value="2" id="002" />
+      <label for="">Seat 003</label>
+      <input type="checkbox" name="seat" value="3" id="003" />
+      <label for="">Seat 004</label>
+      <input type="checkbox" name="seat" value="4" id="004" />
+      <label for="">Seat 005</label>
+      <input type="checkbox" name="seat" value="5" id="005" />
+
+      <button class="btn btn-primary col-md-6">Pay</button>
+    </form>
+
+    <h1>hi</h1>
+    <p></p>
+    <a href=""></a>
+    <input id="numbers" type="number" />
+    <button onclick="show()">click</button>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
+      integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const form = document.querySelector("form");
+      const btn = document.querySelector("button");
+      const values = [];
+      let qualtities = values;
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        var seats = document.forms[0];
+        var txt = "";
+        var newtxt = "";
+        var i;
+        for (i = 0; i < seats.length; i++) {
+          if (seats[i].checked) {
+            txt = txt + seats[i].value + " " ;
+            newtxt = newtxt + seats[i].checked + " " ;
+          }
+        }
+        console.log(txt+newtxt);
+
+        const checked = document.getElementsByName("seat");
+
+        // Seats gettting their unique id to get the values
+        // const one = document.getElementById('001').checked;
+        // const two = document.getElementById('002').checked;
+        // const three = document.getElementById('003').checked;
+        // const four = document.getElementById('004').checked;
+        // const five = document.getElementById('005').checked;
+
+        // console.log(one, two, three, four, five);
+
+        // seatData = { one, two, three, four, five };
+        // const seatDetails = {
+        //   method: "POST",
+        //   body: JSON.stringify(seatData),
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        // };
+        // fetch("/choose", seatDetails)
+        //   .then((res) => {
+        //     // window.location.assign("http://google.com");
+        //   })
+        //   .catch((err) => {
+        //     console.log(err);
+        //   });
+      });
+
+      window.onload = (e) => {};
+    </script>
+  </body>
+</html>
+
+<!-- data = { seats };
+const selected = {
+  method: "POST",
+  body: JSON.stringify(data),
+  headers: {
+    "Content-Type": "application/json",
+  },
+};
+fetch("/book", selected)
+  .then((res) => {})
+  .catch((err) => {
+    console.log(err);
+  }); -->

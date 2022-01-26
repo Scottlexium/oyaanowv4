@@ -1,0 +1,182 @@
+<div class="bus__form" id="busForm">
+  <form action="" id="bus__form__form">
+    <div style="display: none">
+      <label for="">Company name</label>
+      <input type="text" name="company" id="" placeholder="company name" />
+    </div>
+    <div>
+      <label for="">From route</label>
+      <input type="text" name="from" id="going_from" placeholder="going from" />
+    </div>
+    <div>
+      <label for="">To Route</label>
+      <input type="text" name="to" id="going_to" placeholder="going to" />
+    </div>
+    <div>
+      <label for="">Departure Date</label>
+      <input type="date" name="price" id="date" placeholder="departure date" />
+    </div>
+    <div>
+      <label for="">Departure Time</label>
+      <input type="time" name="" id="time" placeholder="departure time" />
+    </div>
+    <div>
+      <label for="">Price per Seat</label>
+      <input type="number" name="price" id="" placeholder="price" />
+    </div>
+    <div>
+      <label for="">Bus Type</label>
+      <select onchange=" busType()" name="" id="bus__type">
+        <option selected value="null">Select a bus type</option>
+        <option value="Hayas">Hayas</option>
+        <option value="Classic">Classic</option>
+      </select>
+    </div>
+    <div>
+      <label for="">Plate Number</label>
+      <input type="number" name="" id="number" placeholder="Plate Number" />
+    </div>
+    <div>
+      <label for="">Number of available seat</label>
+      <input
+        type="number"
+        name="numofseat"
+        id="number_of_available_seats"
+        placeholder="number of available seats"
+      />
+    </div>
+
+    <button type="submit">Add bus</button>
+  </form>
+</div>
+
+<style>
+  .bus__form {
+    display: none;
+    position: fixed;
+    width: 80%;
+    height: 100%;
+    background-color: none;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgba(0, 0, 0, 0.2); */
+  }
+  .bus__form form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 500px;
+    background-color: #1c6ea4;
+    width: 80%;
+    position: relative;
+    border-radius: 15px;
+    top: 10%;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000,
+      5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    padding: 40px 20px;
+  }
+  .bus__form form div {
+    position: relative;
+    width: 40%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .bus__form form div select {
+    width: 90%;
+    height: 40px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: whitesmoke;
+    background: transparent;
+  }
+  .bus__form form div select option {
+    background-color: white;
+    background: white;
+    color: black;
+  }
+
+  .bus__form div input {
+    width: 90%;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-bottom: solid 1px white;
+    color: whitesmoke;
+  }
+  .bus__form div input::placeholder {
+    color: whitesmoke;
+    text-transform: capitalize;
+  }
+  label {
+    width: 90%;
+    margin-bottom: 8px;
+    color: white;
+  }
+  form button {
+    width: 40%;
+    font-size: 20px;
+    height: 40px;
+    /* background-color: ; */
+  }
+</style>
+
+<script>
+  const busForm = document.getElementById("busForm");
+  function addBus() {
+    console.log("hey");
+    busForm.style.display = "flex";
+  }
+
+  const bus__form__form = document.getElementById("bus__form__form");
+  bus__form__form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const bus__type = document.getElementById("bus__type").value;
+    const going_from = document.getElementById("going_from").value;
+    const going_to = document.getElementById("going_to").value;
+    const departure_date = document.getElementById("date").value;
+    const departure_time = document.getElementById("time").value;
+    // const price_per_seat = document.getElementById("").value;
+    const plate_number = document.getElementById("number").value;
+    const number_of_available_seat = document.getElementById(
+      "number_of_available_seats"
+    ).value;
+    const name_of_company = "God is Good";
+
+    bus = {
+      bus__type,
+      going_from,
+      going_to,
+      departure_date,
+      departure_time,
+      plate_number,
+      number_of_available_seat,
+      name_of_company,
+    };
+    const bus_details = {
+      method: "POST",
+      body: JSON.stringify(bus),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    fetch("/load-bus", bus_details)
+      .then((res) => {
+           if (res.status === 200) {
+          window.location.href = "/admin";
+        }
+        // window.location.assign("http://localhost:4000/load-bus");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
+  function busType() {}
+</script>

@@ -37,12 +37,13 @@
             <div><p>Canceled Bookings</p></div>
             <h1>02</h1>
           </li>
-          <li class="add-bus">
-            <section>
+          <li onclick="addBus()" class="add-bus">
+            <section style="cursor: pointer;">
               <div class="add+"><small class="small-plus">+</small></div>
               <h2 class="add_txt">Add Bus</h2>
             </section>
           </li>
+          <%- include ('./partials/bus-form.ejs') %>
         </ul>
         <table border="0" cellpadding="0" cellspacing="0" class="table-serial">
           
@@ -103,6 +104,8 @@
         this.className += " active";
         });
       }
+      
       </script>
+
   </body>
 </html>
