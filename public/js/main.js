@@ -28,34 +28,35 @@
 
             const form = document.getElementById('sc-form');
             form.addEventListener('change', ()=>{
-                var from = document.getElementById("form_from").selectedIndex;
-                var to = document.getElementById("form-to").selectedIndex;
-                var fromPlace = document.getElementsByTagName("option")[from].value;
-                var toPlace = document.getElementsByTagName("option")[to].value;
+                var from = document.getElementById("form_from");
+                var to = document.getElementById("form-to");
+                var fromPlace = from.options[from.selectedIndex].value;
+                var toPlace = to.options[to.selectedIndex].value;
+                console.log(toPlace);
                 // const vehicle = document.getElementById('vehicle__type');
-                var car = "";
+                var car = "None";
                 if (fromPlace === "Benin" && toPlace === "Lagos") {
-                    var car = ["","Classic"];
+                    var car = ["Hayas Lagos"];
+                }else if(fromPlace === "Benin" && toPlace === "Warri"){
+                     var car = ["Classic Warri"];
+                }else if(fromPlace === "Benin" && toPlace === "Port-harcourt"){
+                     var car = ["Classic Port-hacourt "];
                 }else if(fromPlace === "Benin" && toPlace === "Abuja"){
-                     var car = ["Hayas"];
+                     var car = ["Classic Abuja"];
                 }else if(fromPlace === "Benin" && toPlace === "Kaduna"){
-                     var car = ["Classic","Hayas"];
-                }else if(fromPlace === "Benin" && toPlace === ""){
-                     var car = ["Benin"];
-                }else if(fromPlace === "Benin" && toPlace === ""){
-                     var car = ["Benin"];
-                }else if(fromPlace === "Benin" && toPlace === ""){
-                     var car = ["Benin"]
+                     var car = ["Hayas Kaduna"];
+                }else if(fromPlace === "Benin" && toPlace === "Asaba"){
+                     var car = ["Hayas Asaba"]
                 }else if(fromPlace === "Benin" && toPlace === ""){
                      var car = ["Benin"];
                 }
-                var string = "";
+                var string;
             for (i = 0; i < car.length; i++) {
-                string=string+"<option>" + car[i]+ "</option>";
+                string=car;
             }
-            string="<select id='form-to' name='new-to'>"+string+"</select>";
-            document.getElementById("vehicle").innerHTML=string;
-            console.log(car[i]);
+            
+            document.getElementById("bus__elemnt").innerHTML="<h1 class='bus__type'>"+car+"</h1>";;
+            console.log(string);
             });
 
 
